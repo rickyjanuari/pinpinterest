@@ -1242,3 +1242,45 @@ Started GET "/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89
 
 
 Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for 127.0.0.1 at 2015-04-16 12:44:30 +0700
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-16 12:50:47 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (0.6ms)[0m  [1mSELECT "pins".* FROM "pins"  ORDER BY created_at DESC[0m
+  Rendered pins/index.html.haml within layouts/application (13.1ms)
+Completed 200 OK in 78ms (Views: 72.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/pins/new" for 127.0.0.1 at 2015-04-16 12:50:48 +0700
+Processing by PinsController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pins/_form.html.haml (16.0ms)
+  Rendered pins/new.html.haml within layouts/application (19.3ms)
+Completed 200 OK in 110ms (Views: 60.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/pins" for 127.0.0.1 at 2015-04-16 12:51:01 +0700
+Processing by PinsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/UNpTX2bjf+64NknaQ8ZGVqM4BuVtQpkaQJIpCVyfrBgZ85NAPekPHA96YT9i5bNUvRrmyDIajhCJvUXGTQ0hQ==", "pin"=>{"title"=>"second Pin", "description"=>"haseum\r\n"}, "commit"=>"Create Pin"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "pins" ("title", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "second Pin"], ["description", "haseum\r\n"], ["user_id", 1], ["created_at", "2015-04-16 05:51:01.763036"], ["updated_at", "2015-04-16 05:51:01.763036"]]
+  [1m[35m (247.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/pins/2
+Completed 302 Found in 257ms (ActiveRecord: 247.8ms)
+
+
+Started GET "/pins/2" for 127.0.0.1 at 2015-04-16 12:51:02 +0700
+Processing by PinsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPin Load (0.5ms)[0m  [1mSELECT  "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered pins/show.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 48ms (Views: 44.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-04-16 12:51:08 +0700
+Processing by PinsController#index as HTML
+  [1m[36mPin Load (0.3ms)[0m  [1mSELECT "pins".* FROM "pins"  ORDER BY created_at DESC[0m
+  Rendered pins/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.3ms)
