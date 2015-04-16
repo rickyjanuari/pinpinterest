@@ -1,12 +1,22 @@
-= image_tag @pin.image.url(:medium)
-%h1= @pin.title
-%p= @pin.description
-%p
-Submiited by
-= @pin.user.email
+#pin_show.row
+	.col-md-8.col-md-offset-2
+		.panel.panel-deafult
+			.panel-heading.pin_image
+				= image_tag @pin.image.url(:medium)
+			.panel-body
+				%h1= @pin.title
+				%p.description= @pin.description
+				%p
+				Submiited by
+				= @pin.user.email
+			.panel-footer
+				.row
+					.col-md-6
+						Submiited by
+						= @pin.user.email
+					.col-md-6
+						.btn-group.pull-right
+							= link_to "Edit", edit_pin_path, class: "btn btn-default"
+							= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are You Sure?"}, class: "btn btn-default"
 
-%br/
 
-= link_to "Back", root_path
-= link_to "Edit", edit_pin_path
-= link_to "Delete", pin_path, method: :delete, data: { confirm: "Are You Sure?"}
